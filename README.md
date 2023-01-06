@@ -1,9 +1,9 @@
 # TJU-Thesis-Latex-Template
 
-* Latex template for TJU thesis. Forked from [TWT Studio TJU-Thesis-Latex-Template](https://github.com/twtstudio/TJUThesisLatexTemplate).
-* Fork at: 2023-01-06
+* Latex template for TJU thesis. Inspired by [TWT Studio TJU-Thesis-Latex-Template](https://github.com/twtstudio/TJUThesisLatexTemplate).
+* Created at: 2023-01-06
 
-## Fork Change
+## Change
 
 1. 修改 `./Thesis/clean.sh` 使其在类 Unix 系统下正常运行
 2. 增加了在 Arch Linux (Kernel Version 6.1.2) 相关测试并提供所需安装包:
