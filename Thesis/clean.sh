@@ -10,21 +10,23 @@
 # @date 2023-01-06
 #/
 
-### manually clean up
-# echo "- Start Cleaning Build Files"
-# files=`find . \
-# 	-regextype 'posix-egrep' \
-# 	-regex ".*\.(aux|log|out|thm|toc|bbl|blg|fdb_latexmk|fls|gz)"`
-# 
-# [[ "$files" == "" ]] \
-# && echo "- Build Files NOT Found" \
-# && exit
-# 
-# for i in ${files} 
-# do 
-# 	rm $i
-# 	echo "    - Found and Remove $i"
-# done 
-# echo "- Cleaning Build Files End"
+### Use latexmk -> Don't remove bbl|thm
+latexmk -c tjumain && exit
 
-latexmk -c tjumain
+### manually clean up
+echo "- latexmk not callable, Start Cleaning Build Files Manually"
+files=`find . \
+	-regextype 'posix-egrep' \
+	-regex ".*\.(aux|log|out|thm|toc|bbl|blg|fdb_latexmk|fls|gz)"`
+
+[[ "$files" == "" ]] \
+&& echo "- Build Files NOT Found" \
+&& exit
+
+for i in ${files} 
+do 
+	rm $i
+	echo "    - Found and Remove $i"
+done 
+echo "- Cleaning Build Files End"
+
