@@ -2,6 +2,7 @@
 %  Authors: 张井   Jing Zhang: prayever@gmail.com     天津大学2010级管理与经济学部信息管理与信息系统专业硕士生
 %           余蓝涛 Lantao Yu: lantaoyu1991@gmail.com  天津大学2008级精密仪器与光电子工程学院测控技术与仪器专业本科生
 
+
 %%%%%%%%%%%%%%%%% Fonts Definition and Basics %%%%%%%%%%%%%%%%%
 %\newcommand{\song}{\CJKfamily{song}}    % 宋体
 %\newcommand{\fs}{\CJKfamily{fs}}        % 仿宋体
@@ -44,6 +45,7 @@
 % 自定义项目列表标签及格式 \begin{publist} 列表项 \end{publist}
 \newcounter{pubctr} %自定义新计数器
 \newenvironment{publist}{%%%%%定义新环境
+
 \begin{list}{[\arabic{pubctr}]} %%标签格式
     {
      \usecounter{pubctr}
@@ -148,11 +150,6 @@
 
 %\frontmatter 或 \pagenumbering{roman}
 %\mainmatter 或 \pagenumbering{arabic}
-\makeatletter
-\renewcommand\frontmatter{\clearpage
-  \@mainmatterfalse
-  }
-\makeatother
 
 %%%%%%%%%%% Code: Listings from MCM Template %%%%%%%%%%%%
 
@@ -286,7 +283,7 @@
 \end{titlepage}
 
 %%%%%%%%%%%%%%%%%%%   Abstract and Keywords  %%%%%%%%%%%%%%%%%%%%%%%
-\clearpage
+% \clearpage
 \markboth{摘~要}{摘~要}
 \pdfbookmark[0]{摘~~要}{cabstract}
 %\addcontentsline{toc}{chapter}{摘~要}
@@ -301,7 +298,7 @@
 \thispagestyle{empty}
 
 %%%%%%%%%%%%%%%%%%%   English Abstract  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\clearpage
+% \clearpage
 %\phantomsection
 \markboth{ABSTRACT}{ABSTRACT}
 \pdfbookmark[0]{ABSTRACT}{eabstract}
@@ -315,4 +312,20 @@
 {\textbf{Keywords:}} \@ekeywords
 \thispagestyle{empty}
 }
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%% 嵌入单张图片宏 %%%%%%%%%%%%%%%%%%%%
+\newcommand{\figuremacro}[5]{
+  \begin{figure}[#1]
+    \centering
+    \includegraphics[width=#5\columnwidth]{#2}
+    \caption[#3]{\textbf{#3}#4}
+    \label{fig:#2}
+  \end{figure}
+}
+%% \figuremacro{ht}{Method1}{Illustration 1}{ - The Colored Red and Light blue patterns are moved from top to bottom and left to right.}{1.0}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% Hack %%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\patchcmd{\src@startchapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
 \makeatother
